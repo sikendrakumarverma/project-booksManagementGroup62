@@ -10,7 +10,7 @@ const authenticate = function (req, res, next) {
     if (!token) return res.status(400).send({ status: false, message: "Please set token in header" });
     let decodedToken = jwt.verify(token, "Project_3 books-management", { ignoreExpiration: true }, function (error, done) {
       if (error) {
-        return res.status(400).send({ status: false, message: "Token is Invalid" });
+        return res.status(401).send({ status: false, message: "Token is Invalid" });
       }
       return done;
     })
