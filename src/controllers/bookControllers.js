@@ -54,11 +54,11 @@ const createBooks = async function (req, res) {
 
             let uploadedFileURL = await uploadFile(files[0])
             data.bookCover = uploadedFileURL
-
-           // let book = await bookModels.create(data)
-
-            return res.status(201).send({ status: true, message: "Book successfully register", data: book })
         }
+        let book = await bookModels.create(data)
+
+        return res.status(201).send({ status: true, message: "Book successfully register", data: book })
+
 
     } catch (error) {
         console.log(error)
